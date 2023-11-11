@@ -1,0 +1,659 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- font zen dots and inter-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Zen+Dots&display=swap"
+        rel="stylesheet">
+
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <!-- tailwindcss -->
+    <link href="/dist/output.css" rel="stylesheet">
+
+    <!-- alpine js cdn -->
+    <script src="../public/js/alpine.js"></script>
+</head>
+
+<body class="bg-slate-900 relative">
+    <!-- background ungu -->
+    <div
+        class="fixed w-96 xl:w-[620px] h-96 xl:h-[620px] bg-fuchsia-400/30 xl:bg-fuchsia-400/20 blur-3xl rounded-full -z-50 bottom-0 xl:-bottom-28 -right-1/2 xl:-right-1/4 xl:-translate-x-1/2 animate-pulse">
+    </div>
+
+    <!-- menu navigasi -->
+    <nav x-data="{ open : false, atTop : true }" @scroll.window="atTop = window.pageYOffset>50?false:true"
+        class="p-4 md:px-8 lg:px-16 my-4 sticky top-0 z-50"
+        :class="(atTop === false)?'bg-black/60 backdrop-blur-lg':''">
+        <!-- container navigasi -->
+        <div class="container mx-auto">
+            <div class="flex items-center justify-between h-10">
+                <!-- logo -->
+                <div class="order-1 sm:order-2">
+                    <div class="text-sm sm:text-base lg:text-xl text-white font-zendots">
+                        space<span class="text-amber-300">Xplore</span>
+                    </div>
+                </div>
+
+                <!-- menu desktop-->
+                <div class="hidden lg:flex order-2 text-white font-inter text-xl justify-center gap-8">
+                    <a href="#" class="text-sm relative group">
+                        Home
+                        <span
+                            class="absolute w-0 group-hover:w-full h-0.5 bg-amber-300 -bottom-1 left-1/2 -translate-x-1/2 transition-all duration-200"></span>
+                    </a>
+                    <a href="#" class="text-sm relative group">
+                        Tentang
+                        <span
+                            class="absolute w-0 group-hover:w-full h-0.5 bg-amber-300 -bottom-1 left-1/2 -translate-x-1/2 transition-all duration-200"></span>
+                    </a>
+                    <a href="#" class="text-sm relative group">
+                        Tujuan
+                        <span
+                            class="absolute w-0 group-hover:w-full h-0.5 bg-amber-300 -bottom-1 left-1/2 -translate-x-1/2 transition-all duration-200"></span>
+                    </a>
+                    <a href="#" class="text-sm relative group">
+                        Pesan
+                        <span
+                            class="absolute w-0 group-hover:w-full h-0.5 bg-amber-300 -bottom-1 left-1/2 -translate-x-1/2 transition-all duration-200"></span>
+                    </a>
+                    <a href="#" class="text-sm relative group">
+                        Testimoni
+                        <span
+                            class="absolute w-0 group-hover:w-full h-0.5 bg-amber-300 -bottom-1 left-1/2 -translate-x-1/2 transition-all duration-200"></span>
+                    </a>
+                </div>
+
+                <!-- button toggle mobile-->
+                <div x-on:click="open = ! open"
+                    class="order-2 sm:order-1 lg:hidden w-10 h-10 rounded-tl-xl rounded-br-xl bg-amber-300 cursor-pointer relative">
+                    <span x-bind:class="! open ? 'open' : 'close'"
+                        class="bg-slate-900 absolute transition-all duration-200"></span>
+                    <span x-bind:class="! open ? 'open' : 'close'"
+                        class="bg-slate-900 absolute transition-all duration-200"></span>
+                    <span x-bind:class="! open ? 'open' : 'close'"
+                        class="bg-slate-900 absolute transition-all duration-200"></span>
+                </div>
+
+                <!-- button download tablet-->
+                <a href="#"
+                    class="hidden sm:block order-3 text-sm relative group px-4 py-2 bg-amber-300 text-slate-900 font-zendots rounded-tl-xl rounded-br-xl overflow-hidden">
+                    <span class="z-10">Download</span>
+                    <span
+                        class="absolute w-12 h-12 bg-fuchsia-500 rounded-full -bottom-5 left-0 group-hover:left-[100%] group-hover:bottom-0 blur-xl -translate-x-1/2 transition-all duration-500"></span>
+                </a>
+            </div>
+        </div>
+
+        <!-- menu mobile -->
+        <div x-show="open"
+            class="absolute top-20 left-4 right-4 sm:right-1/2 md:left-8 px-16 py-8 bg-black/60 backdrop-blur-lg rounded-tl-xl rounded-br-xl"
+            x-transition>
+            <div class="flex flex-col justify-center gap-4 text-amber-300 font-zendots text-center">
+                <a href="#" class="text-sm relative group">
+                    Home
+                    <span
+                        class="absolute w-0 group-hover:w-full h-0.5 bg-amber-300 -bottom-1 left-1/2 -translate-x-1/2 transition-all duration-200"></span>
+                </a>
+                <a href="#" class="text-sm relative group">
+                    Tentang
+                    <span
+                        class="absolute w-0 group-hover:w-full h-0.5 bg-amber-300 -bottom-1 left-1/2 -translate-x-1/2 transition-all duration-200"></span>
+                </a>
+                <a href="#" class="text-sm relative group">
+                    Tujuan
+                    <span
+                        class="absolute w-0 group-hover:w-full h-0.5 bg-amber-300 -bottom-1 left-1/2 -translate-x-1/2 transition-all duration-200"></span>
+                </a>
+                <a href="#" class="text-sm relative group">
+                    Pesan
+                    <span
+                        class="absolute w-0 group-hover:w-full h-0.5 bg-amber-300 -bottom-1 left-1/2 -translate-x-1/2 transition-all duration-200"></span>
+                </a>
+                <a href="#" class="text-sm relative group">
+                    Testimoni
+                    <span
+                        class="absolute w-0 group-hover:w-full h-0.5 bg-amber-300 -bottom-1 left-1/2 -translate-x-1/2 transition-all duration-200"></span>
+                </a>
+                <a href="#"
+                    class="sm:hidden text-sm relative group px-4 py-2 bg-amber-300 text-slate-900 rounded-tl-xl rounded-br-xl overflow-hidden">
+                    <span class="z-10">Download</span>
+                    <span
+                        class="absolute w-12 h-12 bg-fuchsia-500 rounded-full -bottom-5 left-0 group-hover:left-[100%] group-hover:bottom-0 blur-xl -translate-x-1/2 transition-all duration-500"></span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- header -->
+    <header class="relative -mt-[104px] pb-24 lg:pb-44 bg-[url('../public/img/bg-high-tr.png')] bg-bottom bg-cover">
+        <div class="container mx-auto px-4 md:px-8 lg:px-16">
+            <div class="grid grid-cols-4 lg:items-center pt-[104px] lg:pt-44 lg:grid-cols-12 gap-4">
+                <!-- gambar -->
+                <div class="col-span-4 lg:col-span-6 order-1 lg:order-2">
+                    <div class="w-full">
+                        <img src="../public/img/astronout.png" alt="astronout"
+                            class="px-4 animate-bouncing sm:w-[70%] lg:w-full sm:mx-auto">
+                    </div>
+                </div>
+                <!-- teks -->
+                <div class="col-span-4 lg:col-span-6 order-2 lg:order-1">
+                    <div class="flex flex-col gap-4 lg:gap-8 text-white text-center lg:text-start">
+                        <h1 class="text-2xl sm:text-3xl lg:text-4xl font-zendots" data-aos="fade-right" data-aos-duration="1000">
+                            Pernahkah kamu bermimpi terbang ke luar angkasa
+                        </h1>
+                        <p class="font-inter text-sm lg:text-xl text-slate-300" data-aos="fade-right" >
+                            Kami mengundangmu untuk bergabung dalam perjalanan luar biasa ini. Jadilah bagian dari
+                            sejarah manusia dan eksplorasi angkasa
+                        </p>
+                        <div class="w-full grid grid-cols-4 gap-4 mt-4">
+                            <div class="col-span-4 sm:col-span-2">
+                                <a href=""
+                                    class="px-4 py-2 lg:px-8 lg:py-4 flex justify-center gap-2 bg-amber-300 text-slate-900 lg:text-xl font-zendots rounded-tl-2xl rounded-br-2xl hover:rounded-tl-3xl hover:rounded-br-3xl transition-all duration-200">
+                                    <svg class="w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor" viewBox="0 0 14 16">
+                                        <path
+                                            d="M0 .984v14.032a1 1 0 0 0 1.506.845l12.006-7.016a.974.974 0 0 0 0-1.69L1.506.139A1 1 0 0 0 0 .984Z" />
+                                    </svg>
+                                    <span>Watch Video</span>
+                                </a>
+                            </div>
+                            <div class="col-span-4 sm:col-span-2">
+                                <a href=""
+                                    class="px-4 py-2 lg:px-8 lg:py-4 flex justify-center gap-2 bg-fuchsia-500 text-slate-900 lg:text-xl font-zendots rounded-tl-2xl rounded-br-2xl hover:rounded-tl-3xl hover:rounded-br-3xl transition-all duration-200">
+                                    <svg class="w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor" viewBox="0 0 18 21">
+                                        <path
+                                            d="M14.537 10.625a4.421 4.421 0 0 0 2.684 4.047 10.96 10.96 0 0 1-1.384 2.845c-.834 1.218-1.7 2.432-3.062 2.457-1.339.025-1.769-.794-3.3-.794s-2.009.769-3.275.82c-1.316.049-2.317-1.318-3.158-2.532C1.323 14.984.01 10.451 1.772 7.391a4.9 4.9 0 0 1 4.139-2.507c1.292-.025 2.511.869 3.3.869.789 0 2.271-1.075 3.828-.917A4.67 4.67 0 0 1 16.7 6.82a4.524 4.524 0 0 0-2.161 3.805M12.02 3.193A4.4 4.4 0 0 0 13.06 0a4.482 4.482 0 0 0-2.946 1.516 4.185 4.185 0 0 0-1.061 3.093 3.708 3.708 0 0 0 2.967-1.416Z" />
+                                    </svg>
+                                    <span>Xplore</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- section about -->
+    <div class="container mx-auto p-4 md:px-8 lg:px-16 mb-8 lg:mb-16">
+        <div class="grid grid-cols-4 lg:grid-cols-12 gap-4 lg:items-center">
+            <!-- gambar -->
+            <div class="col-span-4 lg:col-span-5">
+                <div class="w-[70%] mx-auto">
+                    <img src="../public/img/about.png" alt="" class="sm:w-[70%] lg:w-full mx-auto animate-wegel ">
+                </div>
+            </div>
+
+            <!-- text -->
+            <div class="col-span-4 lg:col-span-7">
+                <div class="flex flex-col items-center lg:items-start font-zendots text-center lg:text-start gap-4">
+                    <!-- title section -->
+                    <h4 class="text-fuchsia-500 text-base tracking-widest">SpaceXplore</h4>
+                    <h1 class="text-xl sm:text-2xl md:text-3xl text-white">Kami Akan Mewujudkan <span
+                            class="text-amber-300">Petualang</span> Impian Anda</h1>
+                    <p class="text-xs text-slate-300">
+                        Xplore Space adalah lebih dari sekadar layanan eksplorasi luar angkasa; ini adalah pintu gerbang
+                        menuju keajaiban alam semesta. Kami bukan hanya sebuah perusahaan, tetapi komunitas penggila
+                        ilmu pengetahuan, penjelajah ruang angkasa, dan pemimpin yang berkomitmen membawa eksplorasi
+                        luar angkasa lebih dekat kepada Anda.
+                    </p>
+                    <div class="w-full grid grid-cols-4 gap-4">
+                        <div class="col-span-4 md:col-span-2">
+                            <div class="px-4 py-2 border-2 border-amber-300 rounded-tl-2xl rounded-br-2xl text-center">
+                                <h3 class="font-zendots text-xl text-fuchsia-500 mb-2">4</h3>
+                                <p class="font-inter font-medium text-sm text-slate-300">Tujuan Petualangan Terbaik</p>
+                            </div>
+                        </div>
+                        <div class="col-span-4 md:col-span-2">
+                            <div class="px-4 py-2 border-2 border-amber-300 rounded-tl-2xl rounded-br-2xl text-center">
+                                <h3 class="font-zendots text-xl text-fuchsia-500 mb-2">2000+</h3>
+                                <p class="font-inter font-medium text-sm text-slate-300">Crew Terbaik dari Seluruh Dunia
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-span-4 md:col-span-2">
+                            <div class="px-4 py-2 border-2 border-amber-300 rounded-tl-2xl rounded-br-2xl text-center">
+                                <h3 class="font-zendots text-xl text-fuchsia-500 mb-2">200+</h3>
+                                <p class="font-inter font-medium text-sm text-slate-300">Armada Tangguh Berkualitas</p>
+                            </div>
+                        </div>
+                        <div class="col-span-4 md:col-span-2">
+                            <div class="px-4 py-2 border-2 border-amber-300 rounded-tl-2xl rounded-br-2xl text-center">
+                                <h3 class="font-zendots text-xl text-fuchsia-500 mb-2">10</h3>
+                                <p class="font-inter font-medium text-sm text-slate-300">Satelit Pemberhentian</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- section feature -->
+    <div class="container mx-auto p-4 md:px-8 lg:px-16 my-8 lg:my-16 relative">
+        <!-- text -->
+        <div class="flex flex-col gap-4 font-zendots text-center lg:text-start mb-8">
+            <h4 class="text-fuchsia-500 text-base tracking-widest">Pilih Tujuanmu</h4>
+            <h1 class="text-xl sm:text-2xl md:text-3xl text-white">Eksplore Dunia Takterbatas</h1>
+        </div>
+        <!-- lits tujuan -->
+        <div class="grid grid-cols-4 sm:grid-cols-8 lg:grid-cols-12 gap-4">
+            <div class="col-span-4 lg:col-span-3">
+                <div
+                    class="px-4 md:px-6 pb-8 pt-24 mt-16 bg-gradient-to-br from-slate-500/50 to-slate-800/50 backdrop-blur-lg rounded-3xl relative"  data-aos="zoom-in-up " data-aos-duration="800">
+                    <!-- ilustrasi planet -->
+                    <div
+                        class="absolute w-32 h-32 -top-16 left-1/2 -translate-x-1/2 rounded-full bg-[url('../public/img/mars.png')] bg-center bg-cover">
+                    </div>
+
+                    <!-- text -->
+                    <div class="flex flex-col gap-6">
+                        <div class="font-zendots">
+                            <h2 class="text-2xl text-white mb-2">Mars</h2>
+                            <p class="text-sm text-amber-300">381.95 million km</p>
+                        </div>
+                        <p class="font-inter text-sm text-slate-300">
+
+                            Merah membara, tebing menyaksikan langit indah.
+                        </p>
+                        <a href=""
+                            class="px-4 py-2 font-inter text-base md:text-lg lg:text-xl text-white font-bold bg-fuchsia-500 rounded-tl-2xl rounded-br-2xl flex justify-center group transition-all duration-200 gap-2">
+                            <span>Eksplore</span>
+                            <svg class="w-4 text-white group-hover:scale-125 group-hover:animate-pulse group-hover:text-amber-300 transition-all duration-200"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                viewBox="0 0 20 20">
+                                <path
+                                    d="m7.164 3.805-4.475.38L.327 6.546a1.114 1.114 0 0 0 .63 1.89l3.2.375 3.007-5.006ZM11.092 15.9l.472 3.14a1.114 1.114 0 0 0 1.89.63l2.36-2.362.38-4.475-5.102 3.067Zm8.617-14.283A1.613 1.613 0 0 0 18.383.291c-1.913-.33-5.811-.736-7.556 1.01-1.98 1.98-6.172 9.491-7.477 11.869a1.1 1.1 0 0 0 .193 1.316l.986.985.985.986a1.1 1.1 0 0 0 1.316.193c2.378-1.3 9.889-5.5 11.869-7.477 1.746-1.745 1.34-5.643 1.01-7.556Zm-3.873 6.268a2.63 2.63 0 1 1-3.72-3.72 2.63 2.63 0 0 1 3.72 3.72Z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-4 lg:col-span-3">
+                <div
+                    class="px-4 md:px-6 pb-8 pt-24 mt-16 bg-gradient-to-br from-slate-500/50 to-slate-800/50 backdrop-blur-lg rounded-3xl relative" data-aos="zoom-in-up " data-aos-duration="900">
+                    <!-- ilustrasi planet -->
+                    <div
+                        class="absolute w-32 h-32 -top-16 left-1/2 -translate-x-1/2 rounded-full bg-[url('../public/img/bulan.png')] bg-center bg-cover">
+                    </div>
+
+                    <!-- text -->
+                    <div class="flex flex-col gap-6">
+                        <div class="font-zendots">
+                            <h2 class="text-2xl text-white mb-2">Bulan</h2>
+                            <p class="text-sm text-amber-300">384,400 km</p>
+                        </div>
+                        <p class="font-inter text-sm text-slate-300">
+                            Bulan adalah objek langit yang mempesona, mengambang.
+                        </p>
+                        <a href=""
+                            class="px-4 py-2 font-inter text-base md:text-lg lg:text-xl text-white font-bold bg-fuchsia-500 rounded-tl-2xl rounded-br-2xl flex justify-center group transition-all duration-200 gap-2">
+                            <span>Eksplore</span>
+                            <svg class="w-4 text-white group-hover:scale-125 group-hover:animate-pulse group-hover:text-amber-300 transition-all duration-200"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                viewBox="0 0 20 20">
+                                <path
+                                    d="m7.164 3.805-4.475.38L.327 6.546a1.114 1.114 0 0 0 .63 1.89l3.2.375 3.007-5.006ZM11.092 15.9l.472 3.14a1.114 1.114 0 0 0 1.89.63l2.36-2.362.38-4.475-5.102 3.067Zm8.617-14.283A1.613 1.613 0 0 0 18.383.291c-1.913-.33-5.811-.736-7.556 1.01-1.98 1.98-6.172 9.491-7.477 11.869a1.1 1.1 0 0 0 .193 1.316l.986.985.985.986a1.1 1.1 0 0 0 1.316.193c2.378-1.3 9.889-5.5 11.869-7.477 1.746-1.745 1.34-5.643 1.01-7.556Zm-3.873 6.268a2.63 2.63 0 1 1-3.72-3.72 2.63 2.63 0 0 1 3.72 3.72Z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-4 lg:col-span-3">
+                <div
+                    class="px-4 md:px-6 pb-8 pt-24 mt-16 bg-gradient-to-br from-slate-500/50 to-slate-800/50 backdrop-blur-lg rounded-3xl relative" data-aos="zoom-in-up " data-aos-duration="1000">
+                    <!-- ilustrasi planet -->
+                    <div
+                        class="absolute w-32 h-32 -top-16 left-1/2 -translate-x-1/2 bg-[url('../public/img/satelit.png')] bg-center bg-cover">
+                    </div>
+
+                    <!-- text -->
+                    <div class="flex flex-col gap-6">
+                        <div class="font-zendots">
+                            <h2 class="text-2xl text-white mb-2">Satelit</h2>
+                            <p class="text-sm text-amber-300">35.800 km</p>
+                        </div>
+                        <p class="font-inter text-sm text-slate-300">
+                            Cahaya bulan menari di malam gelap.
+                        </p>
+                        <a href=""
+                            class="px-4 py-2 font-inter text-base md:text-lg lg:text-xl text-white font-bold bg-fuchsia-500 rounded-tl-2xl rounded-br-2xl flex justify-center group transition-all duration-200 gap-2">
+                            <span>Eksplore</span>
+                            <svg class="w-4 text-white group-hover:scale-125 group-hover:animate-pulse group-hover:text-amber-300 transition-all duration-200"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                viewBox="0 0 20 20">
+                                <path
+                                    d="m7.164 3.805-4.475.38L.327 6.546a1.114 1.114 0 0 0 .63 1.89l3.2.375 3.007-5.006ZM11.092 15.9l.472 3.14a1.114 1.114 0 0 0 1.89.63l2.36-2.362.38-4.475-5.102 3.067Zm8.617-14.283A1.613 1.613 0 0 0 18.383.291c-1.913-.33-5.811-.736-7.556 1.01-1.98 1.98-6.172 9.491-7.477 11.869a1.1 1.1 0 0 0 .193 1.316l.986.985.985.986a1.1 1.1 0 0 0 1.316.193c2.378-1.3 9.889-5.5 11.869-7.477 1.746-1.745 1.34-5.643 1.01-7.556Zm-3.873 6.268a2.63 2.63 0 1 1-3.72-3.72 2.63 2.63 0 0 1 3.72 3.72Z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-4 lg:col-span-3">
+                <div
+                    class="px-4 md:px-6 pb-8 pt-24 mt-16 bg-gradient-to-br from-slate-500/50 to-slate-800/50 backdrop-blur-lg rounded-3xl relative" data-aos="zoom-in-up " data-aos-duration="1100">
+                    <!-- ilustrasi planet -->
+                    <div
+                        class="absolute w-32 h-32 -top-16 left-1/2 rounded-full -translate-x-1/2 bg-[url('../public/img/atmosfer.png')] bg-center bg-cover">
+                    </div>
+
+                    <!-- text -->
+                    <div class="flex flex-col gap-6">
+                        <div class="font-zendots">
+                            <h2 class="text-2xl text-white mb-2">Atmosfer</h2>
+                            <p class="text-sm text-amber-300">10.000 km</p>
+                        </div>
+                        <p class="font-inter text-sm text-slate-300">
+                            Langit biru, awan lembut, alam bernyanyi.
+                        </p>
+                        <a href=""
+                            class="px-4 py-2 font-inter text-base md:text-lg lg:text-xl text-white font-bold bg-fuchsia-500 rounded-tl-2xl rounded-br-2xl flex justify-center group transition-all duration-200 gap-2">
+                            <span>Eksplore</span>
+                            <svg class="w-4 text-white group-hover:scale-125 group-hover:animate-pulse group-hover:text-amber-300 transition-all duration-200"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                viewBox="0 0 20 20">
+                                <path
+                                    d="m7.164 3.805-4.475.38L.327 6.546a1.114 1.114 0 0 0 .63 1.89l3.2.375 3.007-5.006ZM11.092 15.9l.472 3.14a1.114 1.114 0 0 0 1.89.63l2.36-2.362.38-4.475-5.102 3.067Zm8.617-14.283A1.613 1.613 0 0 0 18.383.291c-1.913-.33-5.811-.736-7.556 1.01-1.98 1.98-6.172 9.491-7.477 11.869a1.1 1.1 0 0 0 .193 1.316l.986.985.985.986a1.1 1.1 0 0 0 1.316.193c2.378-1.3 9.889-5.5 11.869-7.477 1.746-1.745 1.34-5.643 1.01-7.556Zm-3.873 6.268a2.63 2.63 0 1 1-3.72-3.72 2.63 2.63 0 0 1 3.72 3.72Z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- background -->
+        <div
+            class="absolute w-72 sm:w-96 xl:w-[560px] h-72 sm:h-96 xl:h-[560px] bg-amber-300/30 xl:bg-amber-300/20 blur-3xl rounded-full -z-50 -top-24 xl:-top-48 -left-1/4">
+        </div>
+    </div>
+
+    <!-- section donwload and install -->
+    <div class="container mx-auto p-4 md:px-8 lg:px-16 my-8 lg:my-16">
+        <div class="grid grid-cols-4 lg:grid-cols-12 gap-4 lg:items-center">
+            <!-- text -->
+            <div class="col-span-4 lg:col-span-7 order-2 lg:order-1">
+                <div class="flex flex-col items-center lg:items-start font-zendots text-center lg:text-start gap-4">
+                    <!-- title section -->
+                    <h4 class="text-fuchsia-500 text-base tracking-widest">Download & Install</h4>
+                    <h1 class="text-xl sm:text-2xl md:text-3xl text-white">Eksplorasimu Di Mulai Dari Genggaman <span
+                            class="text-amber-300">Pesan Tiket</span> Sekarang!</h1>
+                    <p class="text-xs text-slate-300">
+                        spaceXplore membawa kenyamanan langsung dari ujung jari anda dengan pemesanan tiket melalui
+                        aplikasi kita merencanakan perjalanan antariksa impian anda dengan dengan hanya beberapa ketukan
+                    </p>
+                    <div class="w-full grid grid-cols-4 gap-4 mt-4">
+                        <div class="col-span-4 sm:col-span-2">
+                            <a href=""
+                                class="px-4 py-2 lg:px-8 lg:py-4 flex justify-center gap-2 bg-amber-300 text-slate-900 lg:text-xl font-zendots rounded-tl-2xl rounded-br-2xl hover:rounded-tl-3xl hover:rounded-br-3xl transition-all duration-200">
+                                <svg class="w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="currentColor" viewBox="0 0 14 16">
+                                    <path
+                                        d="M0 .984v14.032a1 1 0 0 0 1.506.845l12.006-7.016a.974.974 0 0 0 0-1.69L1.506.139A1 1 0 0 0 0 .984Z" />
+                                </svg>
+                                <span>Google Play</span>
+                            </a>
+                        </div>
+                        <div class="col-span-4 sm:col-span-2">
+                            <a href=""
+                                class="px-4 py-2 lg:px-8 lg:py-4 flex justify-center gap-2 bg-fuchsia-500 text-slate-900 lg:text-xl font-zendots rounded-tl-2xl rounded-br-2xl hover:rounded-tl-3xl hover:rounded-br-3xl transition-all duration-200">
+                                <svg class="w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="currentColor" viewBox="0 0 18 21">
+                                    <path
+                                        d="M14.537 10.625a4.421 4.421 0 0 0 2.684 4.047 10.96 10.96 0 0 1-1.384 2.845c-.834 1.218-1.7 2.432-3.062 2.457-1.339.025-1.769-.794-3.3-.794s-2.009.769-3.275.82c-1.316.049-2.317-1.318-3.158-2.532C1.323 14.984.01 10.451 1.772 7.391a4.9 4.9 0 0 1 4.139-2.507c1.292-.025 2.511.869 3.3.869.789 0 2.271-1.075 3.828-.917A4.67 4.67 0 0 1 16.7 6.82a4.524 4.524 0 0 0-2.161 3.805M12.02 3.193A4.4 4.4 0 0 0 13.06 0a4.482 4.482 0 0 0-2.946 1.516 4.185 4.185 0 0 0-1.061 3.093 3.708 3.708 0 0 0 2.967-1.416Z" />
+                                </svg>
+                                <span>Apple Store</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- gambar -->
+            <div class="col-span-4 lg:col-span-5 lg:col-start-8 order-1 lg:order-2">
+                <div class="w-full">
+                    <img src="../public/img/mobile.svg" alt="" class="sm:w-[70%] mx-auto" data-aos="fade-left">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- section testimoni -->
+    <div class="container mx-auto p-4 md:px-8 lg:px-16 my-8 lg:my-16">
+        <div class="grid grid-cols-4 lg:grid-cols-12 gap-8 lg:items-center">
+            <!-- text -->
+            <div class="col-span-4 lg:col-span-5 order-1 lg:order-2">
+                <div class="flex flex-col items-center lg:items-start font-zendots text-center lg:text-start gap-4">
+                    <!-- title section -->
+                    <h4 class="text-fuchsia-500 text-base tracking-widest">Testimonial</h4>
+                    <h1 class="text-xl sm:text-2xl md:text-3xl text-white">Beberapa Cerita <span
+                            class="text-amber-300">Petualangan</span> Client Kami</h1>
+                    <p class="text-xs text-slate-300">
+                        Apa yang membuat Xplore Space begitu istimewa adalah dedikasi mereka untuk pendekatan yang
+                        inklusif dan edukatif. Sebagai seorang guru, saya sangat menghargai sumber daya mereka yang
+                        mendidik, memberikan pemahaman mendalam tentang astronomi dan eksplor
+                    </p>
+                    <a href=""
+                        class="px-4 py-2 mt-8 bg-fuchsia-500 rounded-tl-xl rounded-br-xl font-zendots text-slate-900">
+                        Lihat Lainnya
+                    </a>
+                </div>
+            </div>
+            <!-- testimoni -->
+            <div class="col-span-4 lg:col-span-7 order-2 lg:order-1">
+                <div class="grid grid-cols-7 gap-2 md:gap-4">
+                    <div class="col-span-4">
+                        <div
+                            class="mt-12 p-4 md:p-8 bg-gradient-to-br from-slate-500/50 to-slate-800/50 backdrop-blur-lg rounded-3xl mb-16">
+                            <div class="flex flex-col gap-4 items-center">
+                                <!-- avatar -->
+                                <div class="w-10 aspect-square rounded-full overflow-hidden">
+                                    <img src="../public/img/avatar/avatar (1).jpg" alt="">
+                                </div>
+                                <!-- pesan -->
+                                <p class="text-slate-300 font-inter text-xs md:text-sm text-center">
+                                    "Saya tidak bisa cukup menyampaikan betapa luar biasa pengalaman saya dengan Xplore
+                                    Space! Layanan mereka tidak hanya mengajak saya untuk melihat ke bintang-bintang,
+                                    tetapi juga membawa saya ke dalam perjalanan mendalam melintasi alam semesta”
+                                </p>
+                                <!-- rating -->
+                                <div class="flex justify-center gap-1 text-amber-300">
+                                    <svg class="w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor" viewBox="0 0 22 20">
+                                        <path
+                                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                                    </svg>
+                                    <svg class="w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor" viewBox="0 0 22 20">
+                                        <path
+                                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                                    </svg>
+                                    <svg class="w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor" viewBox="0 0 22 20">
+                                        <path
+                                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                                    </svg>
+                                    <svg class="w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor" viewBox="0 0 22 20">
+                                        <path
+                                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                                    </svg>
+                                    <svg class="w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor" viewBox="0 0 22 20">
+                                        <path
+                                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                                    </svg>
+                                </div>
+                                <!-- nama -->
+                                <h3 class="font-zendots text-amber-300 text-sm">
+                                    Ari Saepuloh
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="p-4 md:p-8 sm:ml-16 bg-fuchsia-500 rounded-3xl">
+                            <div class="flex flex-col items-center gap-2">
+                                <!-- text -->
+                                <h1 class="font-zendots text-white text-base md:text-lg">4.5 / 5.0</h1>
+                                <!-- rating -->
+                                <div class="flex justify-center gap-1 text-amber-300">
+                                    <svg class="w-3 md:w-5 aspect-square" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                        <path
+                                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                                    </svg>
+                                    <svg class="w-3 md:w-5 aspect-square" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                        <path
+                                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                                    </svg>
+                                    <svg class="w-3 md:w-5 aspect-square" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                        <path
+                                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                                    </svg>
+                                    <svg class="w-3 md:w-5 aspect-square" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                        <path
+                                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                                    </svg>
+                                    <svg class="w-3 md:w-5 aspect-square" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 12 20">
+                                        <path
+                                            d="M11.707.707A1 1 0 0 0 11 .414a1.6 1.6 0 0 0-1.409.816l-2.525 4.6-5.687.744A1.576 1.576 0 0 0 .065 7.667a1.485 1.485 0 0 0 .456 1.566l4.05 3.552-.95 4.988a1.5 1.5 0 0 0 .567 1.473 1.624 1.624 0 0 0 1.703.18l5.194-2.457a1 1 0 0 0 .915-1V1.414a1 1 0 0 0-.293-.707Z" />
+                                    </svg>
+                                </div>
+                                <p class="font-inter text-white text-sm md:text-base">
+                                    4.930 Ulasan
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-3">
+                        <!-- client Terbaru -->
+                        <div class="p-4 md:mr-16 lg:mr-12 md:p-8 bg-slate-950/50 backdrop-blur-lg rounded-3xl mb-16">
+                            <h4 class="font-inter text-xs font-bold text-amber-300 text-center mb-4">
+                                Client Terbaru
+                            </h4>
+                            <div class="flex flex-col items-start gap-2">
+                                <!-- list client -->
+                                <div class="flex items-center gap-2">
+                                    <!-- avatar -->
+                                    <div class="w-5 md:w-10 aspect-square overflow-hidden rounded-full">
+                                        <img src="../public/img/avatar/avatar (2).jpg" alt="">
+                                    </div>
+                                    <!-- nama -->
+                                    <h5 class="font-inter text-slate-300 text-xs md:text-base">
+                                        Agung J
+                                    </h5>
+                                </div>
+                                <!-- list client -->
+                                <div class="flex items-center gap-2">
+                                    <!-- avatar -->
+                                    <div class="w-5 md:w-10 aspect-square overflow-hidden rounded-full">
+                                        <img src="../public/img/avatar/avatar (3).jpg" alt="">
+                                    </div>
+                                    <!-- nama -->
+                                    <h5 class="font-inter text-slate-300 text-xs md:text-base">
+                                        Dea Yasika
+                                    </h5>
+                                </div>
+                                <!-- list client -->
+                                <div class="flex items-center gap-2">
+                                    <!-- avatar -->
+                                    <div class="w-5 md:w-10 aspect-square overflow-hidden rounded-full">
+                                        <img src="../public/img/avatar/avatar (4).jpg" alt="">
+                                    </div>
+                                    <!-- nama -->
+                                    <h5 class="font-inter text-slate-300 text-xs md:text-base">
+                                        Ade Irwan
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- testimoni 2 -->
+                        <div
+                            class="p-4 md:p-8 bg-gradient-to-br from-slate-500/50 to-slate-800/50 backdrop-blur-lg rounded-3xl">
+                            <div class="flex flex-col gap-4 items-center">
+                                <!-- avatar -->
+                                <div class="w-10 aspect-square rounded-full overflow-hidden">
+                                    <img src="../public/img/avatar/avatar (5).jpg" alt="">
+                                </div>
+                                <!-- rating -->
+                                <div class="flex justify-center gap-1 text-amber-300">
+                                    <svg class="w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor" viewBox="0 0 22 20">
+                                        <path
+                                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                                    </svg>
+                                    <svg class="w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor" viewBox="0 0 22 20">
+                                        <path
+                                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                                    </svg>
+                                    <svg class="w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor" viewBox="0 0 22 20">
+                                        <path
+                                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                                    </svg>
+                                    <svg class="w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor" viewBox="0 0 22 20">
+                                        <path
+                                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                                    </svg>
+                                    <svg class="w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor" viewBox="0 0 22 20">
+                                        <path
+                                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                                    </svg>
+                                </div>
+                                <!-- nama -->
+                                <h3 class="font-zendots text-amber-300 text-sm text-center">
+                                    Johan J
+                                </h3>
+                                <!-- pesan -->
+                                <p class="text-slate-300 font-inter text-xs lg:text-sm text-center">
+                                    "Ini adalah petualangan terbaik seumur hidup saya, saya akan melakukannya lagi”
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- section ajakan -->
+    <div
+        class="px-4 py-24 sm:py-32 lg:py-52 md:px-8 my-8 lg:my-16 bg-[url('../public/img/bg-2.png')] bg-opacity-20 bg-center bg-cover">
+        <div class="flex flex-col items-center text-center gap-8">
+            <h1 class="text-xl sm:text-2xl md:text-3xl font-zendots text-amber-300">Siap Berpetualang Bersama Kami?</h1>
+            <a href="" class="px-4 md:px-8 py-2 md:py-4 bg-amber-300 rounded-tl-2xl rounded-br-2xl font-zendots">
+                JOIN NOW
+            </a>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="flex flex-col my-8">
+            <div class="text-xs text-slate-300 text-center">@cpyirght/ <span class="text-amber-300">Ari
+                    saepulloh</span>/2023-2024</div>
+        </div>
+    </footer>
+
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+</body>
+
+</html>

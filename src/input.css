@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .open:nth-child(1) {
+        @apply h-0.5 w-6 top-2.5 left-1/2 -translate-x-1/2 origin-left;
+    }
+    .open:nth-child(2) {
+        @apply h-0.5 w-6 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 origin-center;
+    }
+    .open:nth-child(3) {
+        @apply h-0.5 w-6 bottom-2.5 left-1/2 -translate-x-1/2 origin-right;
+    }
+
+    .close:nth-child(1) {
+        @apply h-0.5 w-6 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 origin-center rotate-45;
+    }
+    
+    .close:nth-child(2) {
+        @apply h-0.5 w-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 origin-center;
+    }
+
+    .close:nth-child(3) {
+        @apply h-0.5 w-6 bottom-1/2 left-1/2 -translate-x-1/2 translate-y-1/2 origin-center -rotate-45;
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(-25%);
+        animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+        transform: translateY(0);
+        animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+}
